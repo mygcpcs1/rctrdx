@@ -8,6 +8,7 @@ import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 */
 import Person from './Person/Person';
+//import person from './Person/Person';
 
 
 class App extends Component {
@@ -42,27 +43,23 @@ class App extends Component {
 
     togglePersonsHandler = () => {
         this.setState({
-            showPersons
+            showPersons : !this.state.showPersons
         });
     };
-
+    
     render (){
+
         const style = {
             backgroundColor: 'white',
             font: 'inherit',
             border: '1px solid green',
             padding: '8px'
-        };
+            };
+           
+        let persons = null;
 
-        return (
-            <div>
-                <h1> Hi, I am a React App </h1>
-                <p> This is working! </p>
-                <button style={style} onClick={ () => { this.switchNameHandler("maxi!!!")} }>Switch Name</button>
-                { React.Version }
-
-                { this.state.showPersons ?
-                    <div>
+        if( this.state.showPersons ){
+            persons = (<div>
                         <Person  
                             name={this.state.persons[0].name} 
                             age={this.state.persons[0].age} 
@@ -78,8 +75,16 @@ class App extends Component {
                         name={this.state.persons[2].name} 
                         age={this.state.persons[2].age}>
                             </Person>
-                    </div> : null
-                }
+                    </div>);
+        }
+        return (
+            <div>
+                <h1> Hi, I am a React App </h1>
+                <p> This is working! </p>
+                <button style={style} onClick={ this.togglePersonsHandler } >Switch Name</button>
+                { React.Version }
+
+                { persons }
 
             </div>);
         }
