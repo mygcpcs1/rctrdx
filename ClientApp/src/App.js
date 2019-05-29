@@ -15,9 +15,9 @@ class App extends Component {
 
     state = {
             persons:[
-            {name: "Max", age: 33},
-            {name: "Manu", age: 31},
-            {name: "Steve", age: 32}
+                {id:"as", name: "Max", age: 33},
+                {id:"asd", name: "Manu", age: 31},
+                {id:"asdf", name: "Steve", age: 32}
             ],
         otherState: 'this is other state',
         showPersons: false
@@ -32,13 +32,18 @@ class App extends Component {
             })
     };
 
-    nameChangedHandler = (event) => {
+    nameChangedHandler = (event, id) => {
+        //debugger;
+        const personIndex = this.state.persons.findIndex(p => {
+            return p.id === id
+        })
+        const person = { ... this.state.persons[personIndex]};
+        person.name = event.target.value;
+        const prsns = [...this.state.persons];
+        prsns[personIndex] = person;
         this.setState({
-            persons:[
-            {name: "Max", age: 33},
-            {name: event.target.value, age: 31},
-            {name: "Steve", age: 26}]
-            })
+                persons: prsns
+            });
     };
 
     togglePersonsHandler = () => {
@@ -58,7 +63,8 @@ class App extends Component {
     render (){
 
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
+            color: 'while',
             font: 'inherit',
             border: '1px solid green',
             padding: '8px'
@@ -71,13 +77,16 @@ class App extends Component {
                         {
                             this.state.persons.map((prsn, index) => {
                                 return <Person name={prsn.name}
-                                    age={prsn.age}
-                                    click={() => this.deletePersonHandler(index)}
-                                    >
+                                            age={prsn.age}
+                                            key={prsn.id}
+                                            click={() => this.deletePersonHandler(index)}
+                                            changed={(event) => this.nameChangedHandler(event, prsn.id)}
+                                            >
                                         </Person>;
                             })
                         }
-                    </div>);
+                </div>);
+            style.backgroundColor = 'red';
         }
         return (
             <div>
