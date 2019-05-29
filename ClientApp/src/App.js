@@ -46,6 +46,14 @@ class App extends Component {
             showPersons : !this.state.showPersons
         });
     };
+
+    deletePersonHandler = (index) => {
+        const prsns = this.state.persons;
+        prsns.splice(index, 1);
+        this.setState({
+            persons: prsns
+        });
+    }
     
     render (){
 
@@ -60,21 +68,15 @@ class App extends Component {
 
         if( this.state.showPersons ){
             persons = (<div>
-                        <Person  
-                            name={this.state.persons[0].name} 
-                            age={this.state.persons[0].age} 
-                            click={this.switchNameHandler.bind(this, "maximilian")}
-                            > 
-                        Hobby: games </Person>
-                        <Person 
-                        name={this.state.persons[1].name} 
-                        age={this.state.persons[1].age}
-                        changed={this.nameChangedHandler}>
-                            </Person>
-                        <Person 
-                        name={this.state.persons[2].name} 
-                        age={this.state.persons[2].age}>
-                            </Person>
+                        {
+                            this.state.persons.map((prsn, index) => {
+                                return <Person name={prsn.name}
+                                    age={prsn.age}
+                                    click={() => this.deletePersonHandler(index)}
+                                    >
+                                        </Person>;
+                            })
+                        }
                     </div>);
         }
         return (
