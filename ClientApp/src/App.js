@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 /*
 import React, { useState } from 'react';
 import { Route } from 'react-router';
@@ -88,10 +89,17 @@ class App extends Component {
                 </div>);
             style.backgroundColor = 'red';
         }
+        const appClass = [];
+        if(this.state.persons.length <= 2){
+            appClass.push('red');
+        }
+        if(this.state.persons.length <= 1){
+            appClass.push('bold');
+        }
         return (
             <div>
                 <h1> Hi, I am a React App </h1>
-                <p> This is working! </p>
+                <p className={appClass.join(' ')}> This is working! </p>
                 <button style={style} onClick={ this.togglePersonsHandler } >Switch Name</button>
                 { React.Version }
 
