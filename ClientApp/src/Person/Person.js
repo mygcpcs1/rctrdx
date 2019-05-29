@@ -1,10 +1,22 @@
 ﻿
 import React from 'react';
+//import Radium from 'radium';
 import './Person.css';
 
 const person = (props) => {
+   /* const style1 = {
+            backgroundColor: 'green',
+            color: 'while',
+            font: 'inherit',
+            border: '1px solid green',
+            padding: '8px',
+            ':hover':{
+                    backgroundColor:'blue'
+                }
+            }; */
     return(
         <div className="Person">
+             
             <input type="text" onChange={props.changed} value={props.name} />
 
         <p onClick={props.click} >

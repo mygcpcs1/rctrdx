@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import './App.css';
 /*
 import React, { useState } from 'react';
@@ -68,7 +69,10 @@ class App extends Component {
             color: 'while',
             font: 'inherit',
             border: '1px solid green',
-            padding: '8px'
+            padding: '8px',
+            ':hover':{
+                    backgroundColor:'blue'
+                }
             };
            
         let persons = null;
@@ -95,6 +99,7 @@ class App extends Component {
         }
         if(this.state.persons.length <= 1){
             appClass.push('bold');
+            style[':hover'] = {border:'solid 4px yellow'}
         }
         return (
             <div>
@@ -108,7 +113,7 @@ class App extends Component {
             </div>);
         }
     }
-export default App;
+export default Radium(App);
 
 
 /*
