@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Radium, {StyleRoot} from 'radium';
 import './App.css';
 /*
 import React, { useState } from 'react';
@@ -69,10 +68,7 @@ class App extends Component {
             color: 'while',
             font: 'inherit',
             border: '1px solid green',
-            padding: '8px',
-            ':hover':{
-                    backgroundColor:'blue'
-                }
+            padding: '8px'
             };
            
         let persons = null;
@@ -99,10 +95,8 @@ class App extends Component {
         }
         if(this.state.persons.length <= 1){
             appClass.push('bold');
-            style[':hover'] = {border:'solid 4px yellow'}
         }
         return (
-        <StyleRoot>
             <div>
                 <h1> Hi, I am a React App </h1>
                 <p className={appClass.join(' ')}> This is working! </p>
@@ -112,11 +106,10 @@ class App extends Component {
                 { persons }
 
             </div>
-        </StyleRoot>
             );
         }
     }
-export default Radium(App);
+export default App;
 
 
 /*
