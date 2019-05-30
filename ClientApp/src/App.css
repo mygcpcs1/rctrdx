@@ -8,3 +8,20 @@
 .bold{
     font-weight: bold;
 }
+
+.App button {
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1px solid green;
+    padding: 8px
+}
+.App button:hover {
+    background-color: lightgreen;
+}
+.App button.red {
+    background-color: red;
+}
+.App button.red:hover {
+    background-color: lightcoral;
+}
