@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import cssClasses from './App.css';
 /*
 import React, { useState } from 'react';
 import { Route } from 'react-router';
@@ -64,11 +64,11 @@ class App extends Component {
     render (){
 
         const style = {
-            backgroundColor: 'green',
-            color: 'while',
-            font: 'inherit',
-            border: '1px solid green',
-            padding: '8px'
+                backgroundColor: 'green',
+                color: 'while',
+                font: 'inherit',
+                border: '1px solid green',
+                padding: '8px'
             };
            
         let persons = null;
@@ -91,13 +91,13 @@ class App extends Component {
         }
         const appClass = [];
         if(this.state.persons.length <= 2){
-            appClass.push('red');
+            appClass.push(cssClasses.red);
         }
         if(this.state.persons.length <= 1){
-            appClass.push('bold');
+            appClass.push(cssClasses.bold);
         }
         return (
-            <div>
+            <div className={cssClasses.App}>
                 <h1> Hi, I am a React App </h1>
                 <p className={appClass.join(' ')}> This is working! </p>
                 <button style={style} onClick={ this.togglePersonsHandler } >Switch Name</button>
