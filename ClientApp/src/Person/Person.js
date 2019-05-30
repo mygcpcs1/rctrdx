@@ -13,6 +13,11 @@ const person = (props) => {
                     backgroundColor:'blue'
                 }
                 }; */
+    let rnd = Math.random();
+    console.log(rnd);
+    if(rnd < 0.7){
+        throw new Error('Custom error');
+    }
     return(
             <div className={cssClasses.Person} >
                  

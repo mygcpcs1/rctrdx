@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cssClasses from './App.css';
+
 /*
 import React, { useState } from 'react';
 import { Route } from 'react-router';
@@ -9,7 +10,7 @@ import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 */
 import Person from './Person/Person';
-//import person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
 class App extends Component {
@@ -91,15 +92,17 @@ class App extends Component {
             appClass.push(cssClasses.bold);
         }
         return (
-            <div className={cssClasses.App}>
-                <h1> Hi, I am a React App </h1>
-                <p className={appClass.join(' ')}> This is working! </p>
-                <button className={btnClass} onClick={ this.togglePersonsHandler } >Switch Name</button>
-                { React.Version }
+            <ErrorBoundary>
+                <div className={cssClasses.App}>
+                    <h1> Hi, I am a React App </h1>
+                    <p className={appClass.join(' ')}> This is working! </p>
+                    <button className={btnClass} onClick={ this.togglePersonsHandler } >Switch Name</button>
+                    { React.Version }
 
-                { persons }
+                    { persons }
 
-            </div>
+                        </div>
+            </ErrorBoundary>
             );
         }
     }
