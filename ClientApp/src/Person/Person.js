@@ -1,6 +1,6 @@
 ﻿
 import React from 'react';
-//import Radium from 'radium';
+import Radium from 'radium';
 import './Person.css';
 
 const person = (props) => {
@@ -13,20 +13,26 @@ const person = (props) => {
             ':hover':{
                     backgroundColor:'blue'
                 }
-            }; */
+                }; */
+    const style1 = {
+                '@media (min-width: 500px)': {
+                    width: '100%',
+                    backgroundColor: "orange"
+                }
+        };
     return(
-        <div className="Person">
+        <div className="Person" style={style1}>
              
             <input type="text" onChange={props.changed} value={props.name} />
 
-        <p onClick={props.click} >
-            I am {props.name} and i am {props.age} 
-            </p>
-        <p>
+            <p onClick={props.click} >
+                I am {props.name} and i am {props.age} 
+                </p>
+            <p>
             {props.children}
                 </p>
             </div>
         )
 }
 
-export default person;
+export default Radium(person);

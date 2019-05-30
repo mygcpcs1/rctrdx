@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import './App.css';
 /*
 import React, { useState } from 'react';
@@ -39,7 +39,7 @@ class App extends Component {
         const personIndex = this.state.persons.findIndex(p => {
             return p.id === id
         })
-        const person = { ... this.state.persons[personIndex]};
+        const person = { ...this.state.persons[personIndex]};
         person.name = event.target.value;
         const prsns = [...this.state.persons];
         prsns[personIndex] = person;
@@ -102,6 +102,7 @@ class App extends Component {
             style[':hover'] = {border:'solid 4px yellow'}
         }
         return (
+        <StyleRoot>
             <div>
                 <h1> Hi, I am a React App </h1>
                 <p className={appClass.join(' ')}> This is working! </p>
@@ -110,7 +111,9 @@ class App extends Component {
 
                 { persons }
 
-            </div>);
+            </div>
+        </StyleRoot>
+            );
         }
     }
 export default Radium(App);
