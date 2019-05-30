@@ -10,6 +10,7 @@ import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 */
 import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 //import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
@@ -34,7 +35,7 @@ class App extends Component {
             ]})
     };
 
-    nameChangedHandler = (event, id) => {
+    /*nameChangedHandler = (event, id) => {
         //debugger;
         const personIndex = this.state.persons.findIndex(p => {
             return p.id === id
@@ -46,14 +47,20 @@ class App extends Component {
         this.setState({
                 persons: prsns
             });
-    };
+            };*/
+
+    nameChangedHandler = (persons) => {
+        this.setState({
+                persons: persons
+            });
+    }
 
     togglePersonsHandler = () => {
         this.setState({
             showPersons : !this.state.showPersons
         });
     };
-
+    /*
     deletePersonHandler = (index) => {
         const prsns = this.state.persons.slice();
         prsns.splice(index, 1);
@@ -61,16 +68,34 @@ class App extends Component {
             persons: prsns
         });
     }
-    
+    */
+
+    deletePersonHandler = (persons) => {
+
+        this.setState({
+            persons: persons
+        });
+    }
+
+    setStatePersons = (persons) => {
+        this.setState({
+            persons: persons
+        });
+    }
+
     render (){
 
         let btnClass = '';
            
-        let persons = null;
-
+        const statePersons = this.state.persons.slice();
+        let persons = '';
         if( this.state.showPersons ){
             persons = (<div>
-                        {
+                        <Persons
+                            persons={ statePersons }
+                            setPersons={ (prsns) => this.setStatePersons(prsns)}
+                            />
+                        {/*
                             this.state.persons.map((prsn, index) => {
                                 return <Person name={prsn.name}
                                             age={prsn.age}
@@ -80,7 +105,7 @@ class App extends Component {
                                             >
                                         </Person>;
                             })
-                        }
+                       */} 
                 </div>);
             btnClass = cssClasses.red;
         }
@@ -101,6 +126,7 @@ class App extends Component {
                     { persons }
 
                 </div>
+
             );
         }
     }
