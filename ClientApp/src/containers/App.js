@@ -9,29 +9,29 @@ import Home from './components/Home';
 import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 */
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Person from '../components/Persons/Person/Person';
+//import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
 class App extends Component {
 
     state = {
-            persons:[
-                {id:"as", name: "Max", age: 33},
-                {id:"asd", name: "Manu", age: 31},
-                {id:"asdf", name: "Steve", age: 32}
-            ],
-        otherState: 'this is other state',
-        showPersons: false
-        };
+                persons:[
+                    {id:"as", name: "Max", age: 33},
+                    {id:"asd", name: "Manu", age: 31},
+                    {id:"asdf", name: "Steve", age: 32}
+                ],
+                otherState: 'this is other state',
+                showPersons: false
+            };
 
     switchNameHandler = (newName) => {
         this.setState({
             persons:[
-            {name: newName, age: 33},
-            {name: "Manu", age: 31},
-            {name: "Steve", age: 27}]
-            })
+                {name: newName, age: 33},
+                {name: "Manu", age: 31},
+                {name: "Steve", age: 27}
+            ]})
     };
 
     nameChangedHandler = (event, id) => {
@@ -92,7 +92,6 @@ class App extends Component {
             appClass.push(cssClasses.bold);
         }
         return (
-            <ErrorBoundary>
                 <div className={cssClasses.App}>
                     <h1> Hi, I am a React App </h1>
                     <p className={appClass.join(' ')}> This is working! </p>
@@ -101,8 +100,7 @@ class App extends Component {
 
                     { persons }
 
-                        </div>
-            </ErrorBoundary>
+                </div>
             );
         }
     }
