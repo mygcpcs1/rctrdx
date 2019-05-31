@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 
 import cssClasses from '../../containers/App.css';
 
@@ -17,7 +17,7 @@ const Cockpit = (props) =>{
 
     return (
         <div className={cssClasses.App}>
-            <h1> Hi, I am a React App </h1>
+            <h1> Hi, {props.title} </h1>
             <p className={appClass.join(' ')}> This is working! </p>
             <button className={ btnClass } onClick={ props.togglePersons } >Switch Name</button>
         </div>

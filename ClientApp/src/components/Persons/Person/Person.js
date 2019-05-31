@@ -17,7 +17,8 @@ const person = (props) => {
     console.log(rnd);
     if(rnd < 0.7){
         throw new Error('Custom error');
-    }*/
+        }*/
+    console.log('[Person.js] Rendering...')
     return(
             <div className={cssClasses.Person} >
                  

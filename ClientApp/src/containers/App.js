@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import cssClasses from './App.css';
 
-/*
+
+/*import cssClasses from './App.css';
 import React, { useState } from 'react';
 import { Route } from 'react-router';
 import Layout from './components/Layout';
@@ -17,6 +17,18 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        console.log('[App.js] constructor');
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+}
+    componentDidMount() {
+        console.log('[App.js] component did mount..');
+    }
 
     state = {
                 persons:[
@@ -75,6 +87,7 @@ class App extends Component {
     render (){
 
 
+            console.log('[App.js] Rendering...');
            
 let persons = null;
 
@@ -88,10 +101,11 @@ let persons = null;
       );
     }
 
-    return (
+        return (
             <div >
                 
             <Cockpit 
+                title={this.props.appTitle}
                 persons={this.state.persons}
                 togglePersons={this.togglePersonsHandler}
                 showPersons={this.state.showPersons}
