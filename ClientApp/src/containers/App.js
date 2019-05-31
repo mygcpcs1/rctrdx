@@ -8,9 +8,11 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import Counter from './components/Counter';
 import FetchData from './components/FetchData';
-*/
-import Person from '../components/Persons/Person/Person';
+import Person from '../components/Persons/Person/Person';*/
+
+
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 //import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 
@@ -34,8 +36,8 @@ class App extends Component {
                 {name: "Steve", age: 27}
             ]})
     };
-
-    /*nameChangedHandler = (event, id) => {
+    
+    nameChangedHandler = (event, id) => {
         //debugger;
         const personIndex = this.state.persons.findIndex(p => {
             return p.id === id
@@ -47,33 +49,20 @@ class App extends Component {
         this.setState({
                 persons: prsns
             });
-            };*/
-
-    nameChangedHandler = (persons) => {
-        this.setState({
-                persons: persons
-            });
-    }
-
+    };
+     
+   
     togglePersonsHandler = () => {
         this.setState({
             showPersons : !this.state.showPersons
         });
     };
-    /*
+    
     deletePersonHandler = (index) => {
         const prsns = this.state.persons.slice();
         prsns.splice(index, 1);
         this.setState({
             persons: prsns
-        });
-    }
-    */
-
-    deletePersonHandler = (persons) => {
-
-        this.setState({
-            persons: persons
         });
     }
 
@@ -85,49 +74,33 @@ class App extends Component {
 
     render (){
 
-        let btnClass = '';
+
            
-        const statePersons = this.state.persons.slice();
-        let persons = '';
-        if( this.state.showPersons ){
-            persons = (<div>
-                        <Persons
-                            persons={ statePersons }
-                            setPersons={ (prsns) => this.setStatePersons(prsns)}
-                            />
-                        {/*
-                            this.state.persons.map((prsn, index) => {
-                                return <Person name={prsn.name}
-                                            age={prsn.age}
-                                            key={prsn.id}
-                                            click={() => this.deletePersonHandler(index)}
-                                            changed={(event) => this.nameChangedHandler(event, prsn.id)}
-                                            >
-                                        </Person>;
-                            })
-                       */} 
-                </div>);
-            btnClass = cssClasses.red;
-        }
-        const appClass = [];
-        if(this.state.persons.length <= 2){
-            appClass.push(cssClasses.red);
-        }
-        if(this.state.persons.length <= 1){
-            appClass.push(cssClasses.bold);
-        }
-        return (
-                <div className={cssClasses.App}>
-                    <h1> Hi, I am a React App </h1>
-                    <p className={appClass.join(' ')}> This is working! </p>
-                    <button className={btnClass} onClick={ this.togglePersonsHandler } >Switch Name</button>
-                    { React.Version }
+let persons = null;
 
-                    { persons }
+    if (this.state.showPersons) {
+      persons = (
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
+      );
+    }
 
-                </div>
+    return (
+            <div >
+                
+            <Cockpit 
+                persons={this.state.persons}
+                togglePersons={this.togglePersonsHandler}
+                showPersons={this.state.showPersons}
+                />
+                { persons }
 
-            );
+            </div>
+
+        );
         }
     }
 export default App;
